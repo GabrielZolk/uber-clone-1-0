@@ -5,7 +5,7 @@
 
 ## Página de início
 
-[Imagem da Interface do Aplicativo](https://user-images.githubusercontent.com/109248116/222857132-99aa3454-b2cc-44dd-a746-07a30855ee8f.png)
+![Imagem da Interface do Aplicativo](https://user-images.githubusercontent.com/109248116/222857132-99aa3454-b2cc-44dd-a746-07a30855ee8f.png)
 
 ## Modal de solicitação
 
