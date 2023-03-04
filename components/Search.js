@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Platform } from 'react-native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 
-export default class App extends Component {
+export default class Search extends Component {
     state = {
         searchFocused: false,
     }

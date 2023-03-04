@@ -1,16 +1,18 @@
-import { Text, StyleSheet, View } from 'react-native'
+import { Text, StyleSheet, View, Image } from 'react-native'
 import React, { Component, Fragment } from 'react'
 import MapView, { Marker } from 'react-native-maps'
 import Search from './Search'
 import Directions from './Directions'
 import { getPixelSize } from '../utils'
 import markerImage from '../assets/marker.png'
-import { LocationBox, LocationText, LocationTimeBox, LocationTimeText, LocationTimeTextSmall } from './Styles'
+import { Back, LocationBox, LocationText, LocationTimeBox, LocationTimeText, LocationTimeTextSmall } from './Styles'
 import Geocoder from 'react-native-geocoding'
+import Details from './Details'
+import backImage from '../assets/back.png'
 
-Geocoder.init('AIzaSyC-rFDZyiULaYs76IwC-T7a4KDoJwZyBuI')
+Geocoder.init('AIzaSyC-rFDZyiULaYs76IwC-T7a4KDoJwZyBuI');
 
-export default class App extends Component {
+export default class Map extends Component {
   state = {
     region: null,
     destination: null,
@@ -56,6 +58,10 @@ export default class App extends Component {
     })
   }
 
+  handleBack = () => {
+    this.setState({ destination: null })
+  }
+
   render() {
     const { region, destination, duration, location } = this.state;
 
@@ -82,7 +88,7 @@ export default class App extends Component {
                       right: getPixelSize(50),
                       left: getPixelSize(50),
                       top: getPixelSize(50),
-                      bottom: getPixelSize(50),
+                      bottom: getPixelSize(350),
                     }
                   })
                 }}
@@ -106,7 +112,19 @@ export default class App extends Component {
           )}
 
         </MapView>
-        <Search onLocationSelected={this.handleLocationSelected} />
+
+        {destination ? (
+          <Fragment>
+            <Back onPress={this.handleBack} >
+              <Image source={backImage} />
+            </Back>
+            <Details />
+          </Fragment>
+        ) : (
+          <Search onLocationSelected={this.handleLocationSelected} />
+
+        )}
+
       </View>
     )
   }
